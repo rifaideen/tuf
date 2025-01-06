@@ -21,3 +21,5 @@ while n > 0 {
 
 return sum == original #check if sum is equal to original
 ```
+
+⛔️ do not rush into converting the given integer to string and count. which would require more space and less efficient.

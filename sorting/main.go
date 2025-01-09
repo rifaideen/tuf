@@ -20,4 +20,10 @@ func main() {
 	fmt.Printf("BubbleSort(%v)\n", nums2)
 	BubbleSort(nums2)
 	fmt.Println(nums2)
+
+	nums3 := []int{13, 46, 24, 52, 20, 9}
+
+	fmt.Printf("InsertionSort(%v)\n", nums3)
+	InsertionSort(nums3)
+	fmt.Println(nums3)
 }

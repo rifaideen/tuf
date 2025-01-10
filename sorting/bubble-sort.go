@@ -19,3 +19,20 @@ func BubbleSort(nums []int) {
 		}
 	}
 }
+
+// bubble sort recursively
+func RecursiveBubbleSort(nums []int, n int) {
+	if n == 1 {
+		return
+	}
+
+	for i := 0; i < n-1; i++ {
+		for j := 0; j < n-1-i; j++ {
+			if nums[j] > nums[j+1] {
+				nums[j], nums[j+1] = nums[j+1], nums[j]
+			}
+		}
+	}
+
+	RecursiveBubbleSort(nums, n-1)
+}

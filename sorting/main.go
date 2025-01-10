@@ -26,4 +26,9 @@ func main() {
 	fmt.Printf("InsertionSort(%v)\n", nums3)
 	InsertionSort(nums3)
 	fmt.Println(nums3)
+
+	nums4 := []int{5, 4, 2, 1, 0}
+	fmt.Printf("BubbleSort - Recursive %v", nums4)
+	RecursiveBubbleSort(nums4, len(nums4))
+	fmt.Println(nums4)
 }

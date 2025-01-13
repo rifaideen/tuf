@@ -58,7 +58,6 @@ func conquer(left, right []int) []int {
 	for j < len(right) {
 		t = append(t, right[j])
 		j++
-
 	}
 
 	return t

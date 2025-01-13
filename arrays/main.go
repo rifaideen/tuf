@@ -3,6 +3,11 @@ package main
 import "fmt"
 
 func main() {
+	nums0 := []int{3, 4, 5, 1, 2}
+	fmt.Println("Is it sorted? ", check(nums0))
+
+	removeDuplicates([]int{1, 1, 2})
+
 	nums := []int{1, 2, 3, 4, 5}
 	rotateOneLeft(nums)
 
@@ -30,4 +35,38 @@ func main() {
 
 	missingSortedNumber([]int{1, 2, 4, 5}, 5)
 	missingNumber([]int{1, 2, 4, 5})
+}
+
+// Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.
+//
+// There may be duplicates in the original array.
+//
+// Note: An array A rotated by x positions results in an array B of the same length such that A[i] == B[(i+x) % A.length], where % is the modulo operation.
+func check(nums []int) bool {
+	inversions := 0
+
+	for i := 0; i < len(nums); i++ {
+		if nums[i] > nums[(i+1)%len(nums)] {
+			inversions++
+		}
+
+		if inversions > 1 {
+			return false
+		}
+	}
+
+	return true
+}
+
+func removeDuplicates(nums []int) int {
+	left := 0
+
+	for right := 1; right < len(nums); right++ {
+		if nums[left] != nums[right] {
+			left += 1
+			nums[left] = nums[right]
+		}
+	}
+
+	return left + 1
 }

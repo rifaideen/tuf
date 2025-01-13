@@ -31,4 +31,7 @@ func main() {
 	fmt.Printf("BubbleSort - Recursive %v", nums4)
 	RecursiveBubbleSort(nums4, len(nums4))
 	fmt.Println(nums4)
+
+	nums5 := []int{3, 2, 8, 5, 1, 4, 23}
+	fmt.Println("MergeSort = ", MergeSort(nums5))
 }

@@ -23,4 +23,8 @@ func main() {
 	nums5 := []int{7, 5, 4, 2, 1, 8}
 	QuickSort(nums5)
 	fmt.Println("after quick sort", nums5)
+
+	nums6 := []int{1, 2, 3, 4, 6}
+	nums7 := []int{2, 3, 5}
+	fmt.Printf("union of %v and %v is %v", nums6, nums7, findUnion(nums6, nums7))
 }

@@ -19,4 +19,8 @@ func main() {
 	nums4 := []int{0, 1, 0, 3, 12}
 	moveZeros(nums4)
 	fmt.Println("after moving zeroes to end", nums4)
+
+	nums5 := []int{7, 5, 4, 2, 1, 8}
+	QuickSort(nums5)
+	fmt.Println("after quick sort", nums5)
 }

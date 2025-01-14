@@ -31,10 +31,21 @@ func main() {
 
 	nums6 := []int{1, 2, 3, 4, 6}
 	nums7 := []int{2, 3, 5}
-	fmt.Printf("union of %v and %v is %v", nums6, nums7, findUnion(nums6, nums7))
+	fmt.Printf("union of %v and %v is %v\n", nums6, nums7, findUnion(nums6, nums7))
 
 	missingSortedNumber([]int{1, 2, 4, 5}, 5)
+
 	missingNumber([]int{1, 2, 4, 5})
+
+	nums = []int{1, 1, 2, 3, 1, 1, 1, 1, 4, 5, 6, 1, 1}
+	fmt.Printf(
+		"Max consecutive ones in %v is %d\n",
+		nums,
+		findMaxConsecutiveOnes(nums),
+	)
+
+	// N = 3, k = 5, array[] = {2,3,5}
+	fmt.Println("longest sub-array", longestSubarray([]int{-1, 1, 1}, 1))
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

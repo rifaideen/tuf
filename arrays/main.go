@@ -27,4 +27,7 @@ func main() {
 	nums6 := []int{1, 2, 3, 4, 6}
 	nums7 := []int{2, 3, 5}
 	fmt.Printf("union of %v and %v is %v", nums6, nums7, findUnion(nums6, nums7))
+
+	missingSortedNumber([]int{1, 2, 4, 5}, 5)
+	missingNumber([]int{1, 2, 4, 5})
 }

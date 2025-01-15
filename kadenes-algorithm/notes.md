@@ -1,6 +1,6 @@
-# Kadane's Algorithm to find maximum sub-array
+# Kadane's Algorithm to find maximum sub-array sum
 
-kadane's algorithm is used to find the maximum sub-array in the given array.
+kadane's algorithm is used to find the maximum sub-array sum in the given array.
 
 we start with two variables `sum` to store overall sum and `maxSum` to store maximum sum we have seen so far.
 

@@ -7,18 +7,17 @@ func main() {
 }
 
 func twoSum(nums []int, target int) []int {
-	visited := map[int]int{}
+	visited := make(map[int]int) // value: index pair
 
-	for i := 0; i < len(nums); i++ {
-		current := nums[i]
-		x := target - current
+	for i := range nums {
+		j, ok := visited[target-nums[i]]
 
-		if index, ok := visited[x]; ok {
-			return []int{index, i}
+		if ok {
+			return []int{j, i}
 		}
 
-		visited[current] = i
+		visited[nums[i]] = i
 	}
 
-	return []int{}
+	return []int{-1, -1}
 }

@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	nums := []int{1, 1, 1, 1, 2, 3, 5}
+	nums := []int{2, 2, 1, 1, 1, 2, 2}
 	fmt.Printf("MajorityElement(%v) = %v\n", nums, MajorityElement(nums))
 }
 

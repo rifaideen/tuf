@@ -46,6 +46,14 @@ func main() {
 
 	// N = 3, k = 5, array[] = {2,3,5}
 	fmt.Println("longest sub-array", longestSubarray([]int{-1, 1, 1}, 1))
+
+	arr := [][]int{
+		{3, 1, 2, 4, 5},
+		{1, 2, 3, 4},
+		{3, 4, 5, 6},
+	}
+
+	Intersection(arr)
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

@@ -14,6 +14,19 @@ func main() {
 	high, low := Frequency([]int{10, 5, 10, 10, 10, 5, 20, 20, 20, 20, 20})
 	fmt.Printf("High frequency = %d\nLow frequency = %d\n", high, low)
 
+	matches := [][]int{
+		{1, 3},
+		{2, 3},
+		{3, 6},
+		{5, 6},
+		{5, 7},
+		{4, 5},
+		{4, 8},
+		{4, 9},
+		{10, 4},
+		{10, 9},
+	}
+	findWinners(matches)
 }
 
 func CountFrequency(nums []int) (frequency map[int]int) {

@@ -2,7 +2,7 @@ package main
 
 import "github.com/emirpasic/gods/sets/hashset"
 
-func longestConsecutive(nums []int) int {
+func LongestConsecutive(nums []int) int {
 	longest := 1
 	s := hashset.New()
 

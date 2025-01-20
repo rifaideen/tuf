@@ -58,6 +58,8 @@ func main() {
 	LargestUniqueNumber([]int{11, 10, 11})
 
 	MaxBaloons("loonbalxballpoon")
+
+	LongestConsecutive([]int{100, 4, 200, 1, 3, 2})
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

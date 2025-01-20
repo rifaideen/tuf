@@ -27,6 +27,8 @@ func main() {
 		{10, 9},
 	}
 	findWinners(matches)
+
+	fmt.Println("Contiguos Array of [0,1,0] is", ContiguosArray([]int{0, 1, 0}))
 }
 
 func CountFrequency(nums []int) (frequency map[int]int) {

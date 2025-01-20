@@ -29,6 +29,10 @@ func main() {
 	findWinners(matches)
 
 	fmt.Println("Contiguos Array of [0,1,0] is", ContiguosArray([]int{0, 1, 0}))
+
+	strs := []string{"eat", "tea", "tan", "ate", "nat", "bat"}
+
+	fmt.Println(GroupAnagram(strs))
 }
 
 func CountFrequency(nums []int) (frequency map[int]int) {

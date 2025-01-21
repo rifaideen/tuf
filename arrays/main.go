@@ -60,6 +60,14 @@ func main() {
 	MaxBaloons("loonbalxballpoon")
 
 	LongestConsecutive([]int{100, 4, 200, 1, 3, 2})
+
+	matrix := [][]int{
+		{1, 1, 1},
+		{1, 0, 1},
+		{1, 1, 1},
+	}
+	MatrixZero(matrix)
+	fmt.Println("After matrix zero", matrix)
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

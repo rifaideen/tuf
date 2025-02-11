@@ -69,12 +69,27 @@ func main() {
 	MatrixZero(matrix)
 	fmt.Println("After matrix zero", matrix)
 
-	SpiralMatrix([][]int{
+	spiral := SpiralMatrix([][]int{
 		{1, 2, 3, 4},
 		{5, 6, 7, 8},
 		{9, 10, 11, 12},
 		{13, 14, 15, 16},
 	})
+
+	fmt.Println("Sprial matrix value", spiral)
+
+	fmt.Println("Get pascal triangle of 5:")
+
+	for _, values := range GetPascalTriangle(5) {
+		for _, val := range values {
+			fmt.Print(val, " ")
+		}
+
+		fmt.Println()
+	}
+
+	fmt.Println("Get pascal element at 5th row, 3rd col:", GetPascalElement(5, 3))
+	fmt.Println("Get pascal row for 5th row", GetPascalRow(4))
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

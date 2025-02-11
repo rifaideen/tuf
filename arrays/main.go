@@ -90,6 +90,10 @@ func main() {
 
 	fmt.Println("Get pascal element at 5th row, 3rd col:", GetPascalElement(5, 3))
 	fmt.Println("Get pascal row for 5th row", GetPascalRow(4))
+
+	nums = []int{9, -3, 3, -1, 6, -5}
+	// nums = []int{6, -2, 2, -8, 1, 7, 4, -10}
+	fmt.Println("LongestSubArraySumZero(nums):", LongestSubArraySumZero(nums))
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

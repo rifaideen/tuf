@@ -94,6 +94,27 @@ func main() {
 	nums = []int{9, -3, 3, -1, 6, -5}
 	// nums = []int{6, -2, 2, -8, 1, 7, 4, -10}
 	fmt.Println("LongestSubArraySumZero(nums):", LongestSubArraySumZero(nums))
+
+	intervals := [][]int{
+		{8, 10}, {1, 3}, {2, 6}, {15, 18},
+	}
+	MergeIntervals(intervals)
+
+	intervals = [][]int{
+		{1, 4},
+		{4, 5},
+	}
+	MergeIntervals(intervals)
+
+	MergeSortedArrays([]int{1, 4, 8, 10}, []int{2, 3, 9})
+
+	nums = []int{2, 4, 1, 3, 5}
+	fmt.Println("Inversion of nums:", CountInversions(nums))
+
+	nums = []int{2, 4, 1, 3, 5}
+	fmt.Println("Inversion of nums optimized:", CountInversionsOptimized(nums))
+
+	fmt.Println("Reverse pair:", ReversePair([]int{3, 2, 1, 4}))
 }
 
 // Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions (including zero). Otherwise, return false.

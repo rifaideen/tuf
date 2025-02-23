@@ -19,8 +19,9 @@ func FourSum(nums []int, target int) [][]int {
 				continue
 			}
 
-			k := j + 1
-			l := n - 1
+			// using two-pointer
+			k := j + 1 // from the beginning
+			l := n - 1 // from the end
 
 			for k < l {
 				total := nums[i] + nums[j] + nums[k] + nums[l]

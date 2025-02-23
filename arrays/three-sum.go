@@ -14,8 +14,9 @@ func ThreeSum(nums []int) [][]int {
 			continue
 		}
 
-		j := i + 1
-		k := n - 1
+		// using two-pointers
+		j := i + 1 // at the beginning
+		k := n - 1 // at the end
 
 		for j < k {
 			total := nums[i] + nums[j] + nums[k]

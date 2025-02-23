@@ -19,7 +19,7 @@ func MergeSort(nums []int) []int {
 func divide(nums []int) (left, right []int) {
 	mid := len(nums) / 2
 
-	for i := 0; i < len(nums); i++ {
+	for i := range nums {
 		if i < mid {
 			left = append(left, nums[i])
 		} else {

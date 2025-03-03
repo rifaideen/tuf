@@ -10,4 +10,5 @@ func main() {
 	fmt.Println("First and Last Occurence of 8 in 5,7,7,8,8,10 is ", FirstAndLastOccurence([]int{5, 7, 7, 8, 8, 10}, 8))
 	fmt.Println("Count occurence of 3 in 2, 2 , 3 , 3 , 3 , 3 , 4 = ", CountOccurence([]int{2, 2, 3, 3, 3, 3, 4}, 3))
 	fmt.Println("Count occurence of 2 in 1, 1, 2, 2, 2, 2, 2, 3 = ", CountOccurence([]int{1, 1, 2, 2, 2, 2, 2, 3}, 2))
+	FindMin([]int{3, 4, 5, 1, 2})
 }

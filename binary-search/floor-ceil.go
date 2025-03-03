@@ -6,25 +6,49 @@ package main
 // floor = nums[i] <= n
 // ceil = nums[i] >= n
 func FloorCeil(nums []int, x int) []int {
+	return []int{
+		floor(nums, x),
+		ceil(nums, x),
+	}
+}
+
+// floor = nums[i] <= n
+func floor(nums []int, x int) int {
 	n := len(nums)
-	low := 0
-	high := n - 1
-	floor := -1
-	ceil := -1
+	left := 0
+	right := n - 1
+	ans := -1
 
-	for low <= high {
-		mid := (low + high) / 2
-
-		if nums[mid] >= x {
-			ceil = nums[mid]
-			high = mid - 1
-		}
+	for left <= right {
+		mid := left + ((right - left) / 2)
 
 		if nums[mid] <= x {
-			floor = nums[mid]
-			low = mid + 1
+			ans = mid
+			left = mid + 1 // answer might me too low, search more on the right side
+		} else {
+			right = mid - 1
 		}
 	}
 
-	return []int{floor, ceil}
+	return ans
+}
+
+func ceil(nums []int, x int) int {
+	n := len(nums)
+	left := 0
+	right := n - 1
+	ans := n
+
+	for left <= right {
+		mid := left + ((right - left) / 2)
+
+		if nums[mid] >= x {
+			ans = mid
+			right = mid - 1 // answer might be too high, search on the left side
+		} else {
+			left = mid + 1
+		}
+	}
+
+	return ans
 }

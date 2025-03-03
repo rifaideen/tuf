@@ -16,3 +16,17 @@ Once identified, check if the target is within the range.
 **i.e: for right sorted:** The target should be within mid and right
 
 `if nums[mid] <= target && target <= nums[right]` left = mid + 1. `else` hight = mid - 1
+
+**Search in rotated sorted array - II**
+
+everything is same except when left == mid == right, we can decide which side to go. In that case, we shrink the seach space on both side and continue.
+
+i.e:
+
+```go
+if nums[left] == nums[mid] && nums[mid] == nums[right] {
+    left++
+    right--
+    continue
+}
+```

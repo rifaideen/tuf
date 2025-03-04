@@ -10,6 +10,12 @@ func FindMin(nums []int) int {
 	for left <= right {
 		mid := (left + right) / 2
 
+		// search space is already sorted, nums[left] will be the smaller number in search space.
+		if nums[left] <= nums[right] {
+			ans = min(ans, nums[left])
+			break
+		}
+
 		// identify which part is sorted
 		if nums[left] <= nums[mid] {
 			// left part is sorted, pickup the minimum value

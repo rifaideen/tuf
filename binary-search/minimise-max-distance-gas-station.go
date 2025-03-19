@@ -1,6 +1,9 @@
 package main
 
-import "github.com/emirpasic/gods/queues/priorityqueue"
+import (
+	"github.com/emirpasic/gods/queues/priorityqueue"
+	"github.com/emirpasic/gods/utils"
+)
 
 // Brute force solution
 func MinimiseMaxDistance(nums []int, k int) float64 {
@@ -38,25 +41,42 @@ func MinimiseMaxDistance(nums []int, k int) float64 {
 // Better solution using priority queue
 // It's not tested yet.
 func MinimiseMaxDistancePQ(nums []int, k int) float64 {
+	// create new array of size n-1 filled with 0 initially
 	howMany := make([]int, len(nums)-1)
 
 	type pair struct {
-		diff  float64
-		index int
+		priority float64 // priority between gas stations
+		index    int     // item index
 	}
 
-	pq := priorityqueue.NewWith(nil)
+	// priorotize the pair based on priority attribute in descending order
+	priorotize := func(a, b any) int {
+		priorityA := a.(pair).priority
+		priorityB := b.(pair).priority
 
+		return -utils.Float64Comparator(priorityA, priorityB) // "-" descending order
+	}
+
+	// create priority queue
+	pq := priorityqueue.NewWith(priorotize)
+
+	// feed the priority queue
 	for i := range len(nums) - 1 {
 		pq.Enqueue(pair{
-			diff:  float64(nums[i+1]) - float64(nums[i]),
-			index: i,
+			// calculate distance between next and current gas station and update the priority
+			priority: float64(nums[i+1]) - float64(nums[i]),
+			index:    i,
 		})
 	}
 
+	// we must place the k number of gas stations
 	for gasStation := 1; gasStation <= k; gasStation++ {
-		top, _ := pq.Peek()
-		pq.Dequeue()
+		// pull the highest pair and update the priority
+		top, ok := pq.Dequeue()
+
+		if !ok {
+			panic("queue is empty")
+		}
 
 		sectionIndex := top.(pair).index
 		howMany[sectionIndex]++
@@ -64,12 +84,12 @@ func MinimiseMaxDistancePQ(nums []int, k int) float64 {
 		newSectionLength := initialDiff / float64(howMany[sectionIndex]+1)
 
 		pq.Enqueue(pair{
-			diff:  newSectionLength,
-			index: sectionIndex,
+			priority: newSectionLength,
+			index:    sectionIndex,
 		})
 	}
 
 	ans, _ := pq.Dequeue()
 
-	return ans.(pair).diff
+	return ans.(pair).priority
 }

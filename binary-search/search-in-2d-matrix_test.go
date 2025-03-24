@@ -71,3 +71,40 @@ func Test_searchTarget(t *testing.T) {
 		})
 	}
 }
+
+func Test_searchMatrixBS(t *testing.T) {
+	tests := []struct {
+		name string // description of this test case
+		// Named input parameters for target function.
+		matrix [][]int
+		target int
+		want   bool
+	}{
+		{
+			name: "test case 1",
+			matrix: [][]int{
+				{1, 3, 5, 7},
+				{10, 11, 16, 20},
+				{23, 30, 34, 60},
+			},
+			target: 3,
+			want:   true,
+		},
+		{
+			name: "test case 2",
+			matrix: [][]int{
+				{1, 3, 5, 7},
+				{10, 11, 16, 20},
+				{23, 30, 34, 60},
+			},
+			target: 13,
+			want:   false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got := searchMatrixBS(tt.matrix, tt.target)
+			assert.Equal(t, tt.want, got)
+		})
+	}
+}

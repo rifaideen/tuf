@@ -8,6 +8,7 @@ func rotateString(s string, goal string) bool {
 		return false
 	}
 
+	// concate and check if the goal is substring of concatenated
 	concatenated := s + s
 
 	return strings.Contains(concatenated, goal)

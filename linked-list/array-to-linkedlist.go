@@ -1,10 +1,5 @@
 package main
 
-type Node struct {
-	data int
-	next *Node
-}
-
 func constructLL(nums []int) *Node {
 	head := &Node{
 		data: nums[0],

@@ -63,7 +63,7 @@ func isPalindromeOptimized(head *Node) bool {
 	// find the middle of linked list using tortoise & hare algorithm
 	slow, fast := head, head
 
-	for fast.next != nil && fast.next.next != nil {
+	for fast != nil && fast.next != nil {
 		slow = slow.next
 		fast = fast.next.next
 	}

@@ -5,6 +5,7 @@ func findPairs(head *Node, target int) [][]int {
 	left := head
 	right := head
 
+	// move right to tail
 	for right.Next != nil {
 		right = right.Next
 	}

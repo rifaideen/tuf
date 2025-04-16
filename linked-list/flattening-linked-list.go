@@ -25,36 +25,24 @@ func flattenNodes(l1, l2 *LinkedList) *LinkedList {
 
 	for l1 != nil && l2 != nil {
 		if l1.Val < l2.Val {
-			current.Child = &LinkedList{
-				Val: l1.Val,
-			}
-			current = current.Child
+			current.Child = l1
+			current = l1
+
 			l1 = l1.Child
 		} else {
-			current.Child = &LinkedList{
-				Val: l2.Val,
-			}
-			current = current.Child
+			current.Child = l2
+			current = l2
 
 			l2 = l2.Child
 		}
 	}
 
-	for l1 != nil {
-		current.Child = &LinkedList{
-			Val: l1.Val,
-		}
-		current = current.Child
-		l1 = l1.Child
+	if l1 != nil {
+		current.Child = l1
 	}
 
-	for l2 != nil {
-		current.Child = &LinkedList{
-			Val: l2.Val,
-		}
-		current = current.Child
-
-		l2 = l2.Child
+	if l2 != nil {
+		current.Child = l2
 	}
 
 	return node.Child

@@ -9,8 +9,10 @@ func infix2postfix(expr string) string {
 	ans := ""
 
 	for _, char := range expr {
+		// push the operands to answer
 		if (char >= 'A' && char <= 'Z') || (char >= 'a' && char <= 'z') || (char >= '0' && char <= '9') {
 			ans += string(char)
+			// push the open bracket to stack
 		} else if char == '(' {
 			st.Push(char)
 		} else if char == ')' {

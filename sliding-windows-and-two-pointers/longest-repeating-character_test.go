@@ -14,15 +14,30 @@ func Test_characterReplacement(t *testing.T) {
 		k    int
 		want int
 	}{
-		// {
-		// 	s:    "AABABBA",
-		// 	want: 4,
-		// 	k:    1,
-		// },
+		{
+			s:    "AABA",
+			want: 2,
+			k:    0,
+		},
+		{
+			s:    "AABABBA",
+			want: 4,
+			k:    1,
+		},
+		{
+			s:    "AABABBA",
+			want: 4,
+			k:    1,
+		},
 		{
 			s:    "ABAA",
 			want: 2,
 			k:    0,
+		},
+		{
+			s:    "ABAABBB",
+			want: 6,
+			k:    2,
 		},
 	}
 	for _, tt := range tests {

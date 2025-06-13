@@ -7,16 +7,20 @@ import (
 
 func TestNewMinHeap(t *testing.T) {
 	heap := NewMinHeap()
-	heap.items = []int{-1, 10, 20, 15, 12, 40, 25, 18, 3, 1}
-	heap.size = 9
-	heap.heapify()
-	fmt.Println(heap.items[1:])
+	heap.Insert(4)
+	heap.Insert(1)
+	heap.Insert(10)
+
+	fmt.Println(heap.items)
+	fmt.Println(heap.GetMin())
+	fmt.Println(heap.HeapSize())
+	fmt.Println(heap.IsEmpty())
+	fmt.Println(heap.ExtractMin())
+	heap.ChangeKey(1, 16)
+	fmt.Println(heap.items)
+	fmt.Println(heap.GetMin())
+	fmt.Println(heap.items)
+
+	h := NewMinHeapFrom([]int{4, 16, 10, 1, 12, 16})
+	fmt.Println(h.items)
 }
-
-/*
-	     1
-	 2      3
-   4  5   6   7
-
-   size / 2 (int division)
-*/

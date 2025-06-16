@@ -2,6 +2,7 @@ package main
 
 import "container/heap"
 
+// IntHeap follows min-heap
 type IntHeap []int
 
 func (h IntHeap) Len() int           { return len(h) }
@@ -26,6 +27,7 @@ func (h *IntHeap) Pop() any {
 }
 
 func findKthLargest(nums []int, k int) int {
+	// create min heap and push k number of items
 	h := &IntHeap{}
 	heap.Init(h)
 
@@ -33,6 +35,7 @@ func findKthLargest(nums []int, k int) int {
 		heap.Push(h, nums[num])
 	}
 
+	// loop the remaining and push if current item is greater than top
 	for i := k; i < len(nums); i++ {
 		if nums[i] > h.Top() {
 			heap.Pop(h)
@@ -40,5 +43,6 @@ func findKthLargest(nums []int, k int) int {
 		}
 	}
 
+	// we have removed the small items upto k, now top is the k-th largest number
 	return h.Top()
 }

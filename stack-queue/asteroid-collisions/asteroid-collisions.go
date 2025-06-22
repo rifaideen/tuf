@@ -4,16 +4,19 @@ func asteroidCollision(asteroids []int) []int {
 	st := []int{}
 
 	for _, i := range asteroids {
-		if i > 0 {
+		if i > 0 { // put it to stack, the asteroids moves towards right side
 			st = append(st, i)
-		} else {
+		} else { // negative value, moved towards left side and about to collide with asteroids coming towards right side
+			// while stack is not empty, and stack top is > 0 && stack top is less than the current asteroid, the stack top get destroyed
+			// due to the collided asteroid is bigger
 			for len(st) > 0 && st[len(st)-1] > 0 && st[len(st)-1] < (-i) {
 				st = st[:len(st)-1]
 			}
 
+			// we have some asteroids left, and when both of them being same size, both gets destroyed (means, pop from stack)
 			if len(st) > 0 && st[len(st)-1] == (-i) {
 				st = st[:len(st)-1]
-			} else if len(st) == 0 || st[len(st)-1] < 0 {
+			} else if len(st) == 0 || st[len(st)-1] < 0 { // stack becomes empty or stack top is already filled with negative asteroids
 				st = append(st, i)
 			}
 		}

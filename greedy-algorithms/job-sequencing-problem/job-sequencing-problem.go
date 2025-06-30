@@ -14,13 +14,13 @@ func jobSequencing(deadlines, profits []int) []int {
 	}
 
 	sum := 0
-	schedule := make([]int, maxDeadline+1)
+	schedule := make([]int, maxDeadline)
 	earnings := 0
 
 	for h.size > 0 {
 		value := h.Pop()
 
-		for j := value[1]; j >= 0; j-- { // loop from the deadline till 0
+		for j := value[1] - 1; j >= 0; j-- { // loop from the deadline till 0
 			if schedule[j] == 0 {
 				schedule[j] = value[0] // store the id
 				earnings += value[2]   // sum the earnings

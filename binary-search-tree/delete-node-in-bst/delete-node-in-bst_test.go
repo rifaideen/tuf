@@ -9,9 +9,7 @@ func Test_deleteNode(t *testing.T) {
 		root *TreeNode
 		key  int
 		want *TreeNode
-	}{
-		// TODO: Add test cases.
-	}
+	}{}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			got := deleteNode(tt.root, tt.key)

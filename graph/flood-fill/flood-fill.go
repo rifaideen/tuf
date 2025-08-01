@@ -26,40 +26,32 @@ func floodFill(image [][]int, sr int, sc int, color int) [][]int {
 	// We'll use this to determine which pixels are part of the connected region.
 	oldColor := image[sr][sc]
 
-	// visited matrix to keep track of which pixels have been processed.
-	// Prevents revisiting and redundant work (especially important to avoid cycles).
-	visited := make([][]int, rows)
-	for row := range rows {
-		visited[row] = make([]int, cols)
-	}
-
 	// dfs is a nested recursive function that explores all 4-connected pixels
 	// (up, down, left, right) that have the oldColor and haven't been visited yet.
 	var dfs func(row, col int)
 	dfs = func(row, col int) {
-		// Mark current pixel as visited and update its color.
-		visited[row][col] = 1
+		// Paint current pixel with new color.
 		image[row][col] = color
 
 		// Explore the four adjacent neighbors (up, down, left, right)
 
 		// Move up
-		if row-1 >= 0 && image[row-1][col] == oldColor && visited[row-1][col] == 0 {
+		if row-1 >= 0 && image[row-1][col] == oldColor {
 			dfs(row-1, col)
 		}
 
 		// Move down
-		if row+1 < rows && image[row+1][col] == oldColor && visited[row+1][col] == 0 {
+		if row+1 < rows && image[row+1][col] == oldColor {
 			dfs(row+1, col)
 		}
 
 		// Move left
-		if col-1 >= 0 && image[row][col-1] == oldColor && visited[row][col-1] == 0 {
+		if col-1 >= 0 && image[row][col-1] == oldColor {
 			dfs(row, col-1)
 		}
 
 		// Move right
-		if col+1 < cols && image[row][col+1] == oldColor && visited[row][col+1] == 0 {
+		if col+1 < cols && image[row][col+1] == oldColor {
 			dfs(row, col+1)
 		}
 	}

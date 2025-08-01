@@ -31,3 +31,11 @@ Types:
 
 * in-degree of node, the number of incoming edges to the node
 * out-degree of node, the number of outgoing edges from the ndoe
+
+
+
+DFS Traversal:
+    Stack or Recursion
+
+BFS Traversal:
+    Queue based traversal (level by level)

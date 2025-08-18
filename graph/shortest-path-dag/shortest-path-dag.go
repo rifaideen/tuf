@@ -50,7 +50,7 @@ func shortestPath(n, m int, edges [][]int) []int {
 		distances[node] = 1e9
 
 		if visited[node] == 0 {
-			dfs(node, visited, &stack, adjList)
+			toposort(node, visited, &stack, adjList)
 		}
 	}
 
@@ -86,7 +86,7 @@ func shortestPath(n, m int, edges [][]int) []int {
 	return distances
 }
 
-// dfs performs a depth-first search to help generate a topological ordering.
+// toposort performs a depth-first search to help generate a topological ordering.
 // Nodes are added to the stack **after** all their descendants are processed.
 // This ensures that in the stack, each node appears after all nodes it depends on.
 //
@@ -96,13 +96,13 @@ func shortestPath(n, m int, edges [][]int) []int {
 //	visited: tracks which nodes have been processed
 //	stack: pointer to the stack to push nodes in reverse DFS finish order
 //	adjList: adjacency list representing the graph
-func dfs(node int, visited []int, stack *[]int, adjList [][]pair) {
+func toposort(node int, visited []int, stack *[]int, adjList [][]pair) {
 	visited[node] = 1 // Mark node as visited
 
 	// Visit all unvisited neighbors
 	for _, neighbor := range adjList[node] {
 		if visited[neighbor.node] == 0 {
-			dfs(neighbor.node, visited, stack, adjList)
+			toposort(neighbor.node, visited, stack, adjList)
 		}
 	}
 

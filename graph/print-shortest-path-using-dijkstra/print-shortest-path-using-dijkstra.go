@@ -174,11 +174,11 @@ func (h *MinHeap) down(index int) {
 	smallest := index
 
 	// Amongst three possible candidates (current node, left child, and right child), find out which one has least distances among them so that swapping can occur to maintain integrity as per Dijkstra's constraints.
-	if left < h.size && h.items[smallest].distance < h.items[left].distance {
+	if left < h.size && h.items[left].distance < h.items[smallest].distance {
 		smallest = left
 	}
 
-	if right < h.size && h.items[smallest].distance < h.items[right].distance {
+	if right < h.size && h.items[right].distance < h.items[smallest].distance {
 		smallest = right
 	}
 

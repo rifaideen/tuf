@@ -23,6 +23,11 @@ func fibonacci(n int, memoized *[]int) int {
 // by using tabulization
 func fibonacci2(n int) int {
 	tabular := make([]int, n+1)
+
+	for i := range n + 1 {
+		tabular[i] = -1
+	}
+
 	tabular[0] = 0
 	tabular[1] = 1
 

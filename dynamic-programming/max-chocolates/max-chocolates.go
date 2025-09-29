@@ -122,3 +122,63 @@ func fMemoized(i, j1, j2, n, m int, grid [][]int, memoized *[][][]int) int {
 	(*memoized)[i][j1][j2] = maxValue
 	return maxValue
 }
+
+func maxChocolatesTabulation(grid [][]int) int {
+	n := len(grid)    // Number of rows
+	m := len(grid[0]) // Number of columns
+
+	tabulation := make([][][]int, n)
+
+	for i := range tabulation {
+		tabulation[i] = make([][]int, m)
+
+		for j := range tabulation[i] {
+			tabulation[i][j] = make([]int, m)
+		}
+	}
+
+	for i := range m {
+		for j := range m {
+			if i == j {
+				tabulation[n-1][i][j] = grid[n-1][i]
+			} else {
+				tabulation[n-1][i][j] = grid[n-1][i] + grid[n-1][j]
+			}
+		}
+	}
+
+	for i := n - 2; i >= 0; i-- {
+		for j1 := range m {
+			for j2 := range m {
+
+				deltas := []int{-1, 0, 1}
+				maxi := int(-1e5)
+
+				for _, dr := range deltas {
+					for _, dc := range deltas {
+						ans := 0
+
+						if j1 == j2 {
+							ans += grid[i][j1]
+						} else {
+							ans += grid[i][j1] + grid[i][j2]
+						}
+
+						if j1+dr < 0 || j1+dr >= m || j2+dc < 0 || j2+dc >= m {
+							ans += -1e9
+						} else {
+							ans += tabulation[i+1][j1+dr][j2+dc]
+						}
+
+						maxi = max(maxi, ans)
+					}
+
+				}
+
+				tabulation[i][j1][j2] = maxi
+			}
+		}
+	}
+
+	return tabulation[0][0][m-1]
+}

@@ -111,3 +111,57 @@ func isSubsetSumT(arr []int, target int) bool {
 	// That’s precisely the definition of the subset sum problem.
 	return tabulation[n-1][k]
 }
+
+func isSubsetSumOptimized(arr []int, target int) bool {
+	n := len(arr)
+
+	// We only need two rows at a time:
+	// - 'previous': results from processing first i elements
+	// - 'current': building result for first i+1 elements
+	//
+	// Why? Because in the DP recurrence:
+	//   dp[i][sum] = dp[i-1][sum] OR dp[i-1][sum - arr[i]]
+	// It only depends on the previous row, NOT earlier ones.
+	// So we can discard all prior rows → space optimization!
+	previous := make([]bool, target+1)
+	current := make([]bool, target+1)
+
+	// Base case: sum 0 is always achievable (by picking no elements)
+	previous[0] = true
+	current[0] = true // maintain consistency
+
+	// Initialize base case for first element
+	if arr[0] <= target {
+		previous[arr[0]] = true // with only arr[0], we can form sum = arr[0]
+	}
+
+	// Process each element one by one
+	for i := 1; i < n; i++ {
+		for sum := 1; sum <= target; sum++ {
+			pick := false
+
+			// If current number fits into 'sum', try including it
+			// Then check if the remaining amount (sum - arr[i]) was achievable
+			// using the previous state (i.e., without current element)
+			if arr[i] <= sum {
+				pick = previous[sum-arr[i]]
+			}
+
+			// Not picking current element:
+			// same sum must have been possible without it
+			notPick := previous[sum]
+
+			// Current state: either choice works
+			current[sum] = pick || notPick
+		}
+
+		// After finishing row i, 'current' becomes the new 'previous'
+		// for the next iteration. We don't need older data anymore.
+		//
+		// This is the key to space optimization:
+		// Instead of keeping all n rows, we keep just the last one.
+		previous = append([]bool{}, current...)
+	}
+
+	return previous[target]
+}
